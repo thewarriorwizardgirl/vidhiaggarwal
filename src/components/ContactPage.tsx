@@ -20,7 +20,7 @@ export default function ContactPage() {
   return (
     <section
       aria-labelledby="contact-title"
-      className="mx-auto w-full max-w-4xl flex-1 px-4 py-10 sm:px-8 sm:py-14 lg:px-12"
+      className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:px-10 sm:py-14 lg:px-16"
     >
       <header className="mb-9 sm:mb-12">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
@@ -38,8 +38,8 @@ export default function ContactPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <article className="flex flex-col border border-line bg-paper p-5 sm:p-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-16">
+        <article className="flex flex-col border-2 border-line bg-paper p-6 sm:p-7 lg:w-3/4 lg:justify-self-start lg:p-6">
           <div className="flex size-10 items-center justify-center border border-line">
             <MessageCircle
               aria-hidden="true"
@@ -67,7 +67,7 @@ export default function ContactPage() {
           </a>
         </article>
 
-        <article className="flex flex-col border border-line bg-paper p-5 sm:p-6">
+        <article className="flex flex-col border-2 border-line bg-paper p-6 sm:p-7 lg:w-3/4 lg:justify-self-end lg:p-6">
           <div className="flex size-10 items-center justify-center border border-line">
             <Mail aria-hidden="true" size={19} strokeWidth={1.5} />
           </div>

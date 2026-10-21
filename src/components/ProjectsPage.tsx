@@ -8,7 +8,7 @@ export default function ProjectsPage() {
   return (
     <section
       aria-labelledby="projects-title"
-      className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-8 sm:py-14 lg:px-12"
+      className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:px-10 sm:py-14 lg:px-16"
     >
       <header className="mb-9 sm:mb-12">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
@@ -26,9 +26,15 @@ export default function ProjectsPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-6 xl:gap-10">
-        {projectGroups.map((group) => (
-          <section aria-labelledby={`group-${group.title}`} key={group.title}>
+      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-24 xl:gap-32">
+        {projectGroups.map((group, index) => (
+          <section
+            aria-labelledby={`group-${group.title}`}
+            className={`lg:w-3/4 ${
+              index === 0 ? 'lg:justify-self-start' : 'lg:justify-self-end'
+            }`}
+            key={group.title}
+          >
             <div className="mb-4 flex items-center gap-3 border-b border-line pb-3">
               <span
                 aria-hidden="true"
@@ -47,11 +53,11 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 gap-4 lg:gap-12">
               {group.projects.map((project) => {
                 const cardContent = (
-                  <div className="flex min-h-32">
-                    <div className="relative min-h-32 w-[36%] shrink-0 overflow-hidden bg-mist sm:w-[38%]">
+                  <div className="flex min-h-32 lg:min-h-28">
+                    <div className="relative min-h-32 w-[36%] shrink-0 overflow-hidden bg-mist sm:w-[38%] lg:min-h-28 lg:w-[34%]">
                       <img
                         alt={project.name}
                         className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -62,7 +68,7 @@ export default function ProjectsPage() {
                         {project.status === 'Live' ? 'Live' : 'Soon'}
                       </span>
                     </div>
-                    <div className="flex min-w-0 flex-1 flex-col justify-between gap-3 p-3 sm:p-4">
+                    <div className="flex min-w-0 flex-1 flex-col justify-between gap-3 p-3 sm:p-4 lg:p-3">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
                           <h3
@@ -103,7 +109,7 @@ export default function ProjectsPage() {
                 return project.href ? (
                   <a
                     aria-label={`${project.name} — Visit site`}
-                    className="group overflow-hidden border border-line bg-paper transition-shadow hover:shadow-md"
+                    className="group overflow-hidden border-2 border-line bg-paper transition-shadow hover:shadow-md"
                     href={project.href}
                     key={project.name}
                     rel="noreferrer"
@@ -115,7 +121,7 @@ export default function ProjectsPage() {
                 ) : (
                   <button
                     aria-pressed={selectedProject === project.name}
-                    className="group block w-full overflow-hidden border border-line bg-paper text-left transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                    className="group block w-full overflow-hidden border-2 border-line bg-paper text-left transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
                     key={project.name}
                     onClick={() =>
                       setSelectedProject(

@@ -53,7 +53,7 @@ export default function ProfessionalJourneyPage() {
   return (
     <section
       aria-labelledby="journey-title"
-      className="mx-auto w-full max-w-4xl flex-1 px-4 py-10 sm:px-8 sm:py-14 lg:px-12"
+      className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:px-10 sm:py-14 lg:px-16"
     >
       <header className="mb-8 sm:mb-12">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
@@ -65,16 +65,16 @@ export default function ProfessionalJourneyPage() {
         >
           Professional Journey
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/65 sm:text-base">
-          Software Engineer with 8+ years of experience crafting large-scale,
-          resilient digital platforms. Click any milestone to explore technical
-          achievements, architectures, and stories.
+        <p className="mt-3 text-sm leading-relaxed text-ink/65 sm:text-base">
+          Software Engineer with 8+ years of experience crafting large-scale, resilient digital platforms. 
+          Click any milestone to explore technical
+achievements, architectures, and stories.
         </p>
       </header>
 
       <div
         aria-label="Filter milestones by category"
-        className="mb-7 flex flex-wrap gap-2 border-b border-line pb-5"
+        className="mb-7 flex flex-wrap gap-1.5 border-b border-line pb-5"
         role="group"
       >
         {categories.map((category) => {
@@ -88,7 +88,7 @@ export default function ProfessionalJourneyPage() {
           return (
             <button
               aria-pressed={isActive}
-              className={`journey-filter rounded-none border px-3.5 py-2 text-xs font-semibold transition-colors ${
+              className={`journey-filter rounded-none border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
                 isActive
                 ? 'border-ink bg-ink text-white'
                   : 'border-line bg-paper text-ink/65 hover:bg-mist hover:text-ink'
@@ -106,7 +106,7 @@ export default function ProfessionalJourneyPage() {
         })}
       </div>
 
-      <div className="relative space-y-5 sm:space-y-7" ref={timelineRef}>
+      <div className="relative space-y-7 sm:space-y-9" ref={timelineRef}>
         <div
           aria-hidden="true"
           className="absolute bottom-4 left-[105px] top-4 w-px bg-line sm:left-[145px]"
@@ -145,32 +145,36 @@ export default function ProfessionalJourneyPage() {
                 aria-hidden="true"
                 className="absolute left-[99px] top-6 z-10 size-3 rounded-full border-2 border-paper bg-ink ring-1 ring-line sm:left-[139px]"
               />
-              <div className="col-start-2 overflow-hidden rounded-lg border border-line bg-paper transition-shadow hover:shadow-sm">
+              <div className="col-start-2 overflow-hidden rounded-lg bg-paper transition-shadow hover:shadow-sm">
                 <button
                   aria-controls={`details-${milestone.id}`}
                   aria-expanded={isExpanded}
-                  className="group flex w-full items-start justify-between gap-3 p-4 text-left sm:p-5"
+                  className="group flex w-full items-start justify-between gap-3 p-4 text-left sm:p-5 lg:p-4"
                   onClick={() =>
                     setExpandedMilestone(isExpanded ? null : milestone.id)
                   }
                   type="button"
                 >
-                  <span>
-                    <span
-                      className={`relative inline-block text-sm font-semibold leading-snug tracking-tight after:absolute after:-bottom-1 after:left-0 after:h-1 after:w-full after:origin-left after:bg-ink after:transition-transform after:duration-300 sm:text-base ${
-                        isExpanded
-                          ? 'after:scale-x-100'
-                          : 'after:scale-x-0 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100'
-                      }`}
-                    >
-                      {milestone.role}
-                    </span>
-                    <span className="mt-1 block text-xs font-medium text-ink/75 sm:text-sm">
-                      {milestone.organization}
-                    </span>
-                    <span className="mt-1.5 flex items-center gap-1 text-[10px] text-ink/50 sm:text-xs">
-                      <MapPin aria-hidden="true" size={12} />
-                      {milestone.location}
+                  <span className="min-w-0 flex-1">
+                    <span className="flex flex-col gap-1 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
+                      <span
+                        className={`relative inline-block text-sm font-semibold leading-snug tracking-tight after:absolute after:-bottom-1 after:left-0 after:h-1 after:w-full after:origin-left after:bg-ink after:transition-transform after:duration-300 sm:text-base ${
+                          isExpanded
+                            ? 'after:scale-x-100'
+                            : 'after:scale-x-0 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100'
+                        }`}
+                      >
+                        {milestone.role}
+                      </span>
+                      <span className="lg:shrink-0 lg:text-right">
+                        <span className="block text-xs font-medium text-ink/75 sm:text-sm">
+                          {milestone.organization}
+                        </span>
+                        <span className="mt-1.5 flex items-center gap-1 text-[10px] text-ink/50 sm:text-xs lg:justify-end">
+                          <MapPin aria-hidden="true" size={12} />
+                          {milestone.location}
+                        </span>
+                      </span>
                     </span>
                     <span className="mt-3 block text-xs leading-relaxed text-ink/65 sm:text-sm">
                       {milestone.summary}

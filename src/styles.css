@@ -83,6 +83,11 @@ button {
   font: inherit;
 }
 
+.journey-filter {
+  padding: 4px 8px;
+  font: 600 12px/1.25 var(--font-sans);
+}
+
 ::selection {
   color: var(--color-paper);
   background: var(--color-ink);

@@ -52,7 +52,7 @@ export default function ProfessionalJourneyPage() {
 
           <div
             aria-label="Filter milestones by category"
-            className="mb-7 flex flex-wrap gap-1.5 border-b border-line pb-5"
+            className="mb-7 flex flex-wrap gap-1 border-b border-line pb-5"
             role="group"
           >
             {categories.map((category) => {
@@ -66,7 +66,7 @@ export default function ProfessionalJourneyPage() {
               return (
                 <button
                   aria-pressed={isActive}
-                  className={`journey-filter rounded-none border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
+                  className={`journey-filter rounded-none border px-2 py-1 text-xs font-semibold transition-colors ${
                     isActive
                       ? 'border-ink bg-ink text-white'
                       : 'border-line bg-paper text-ink/65 hover:bg-mist hover:text-ink'

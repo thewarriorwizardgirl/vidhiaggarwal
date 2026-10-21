@@ -1,8 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 
 const journalUrl = 'https://journal-aggarwalvidhi.netlify.app/'
-const journalImage =
-  'https://thewarriorwizardgirl.com/assets/girl_pointing_journal_1792321980355-BVd-7i8R.jpg'
+const journalImage = '/images/journal/journal-image.png'
 
 export default function JournalPage() {
   return (

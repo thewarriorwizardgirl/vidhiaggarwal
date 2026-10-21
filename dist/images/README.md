@@ -5,18 +5,25 @@ Add image files for the website in this folder, for example:
 ```text
 public/
   images/
-    about-portrait.jpg
-    journal-cover.webp
+    home/
+      slide-one.jpg
+    journal/
+      journal-image.png
+    projects/
+      kitchen-garden.png
+      coming-soon.png
 ```
 
 Files in `public/` are copied directly into the production build. An image saved
-as `public/images/about-portrait.jpg` is used in the site as `/images/about-portrait.jpg`.
+as `public/images/journal/journal-image.png` is used in the site as
+`/images/journal/journal-image.png`.
 
-To use an image in the home carousel, update the matching `image` value in
-`src/data/slides.ts`:
+Keep images grouped by page (`home`, `journal`, `projects`) and reference them
+with root-relative URLs in the app. For example, to use an image in the home
+carousel, update the matching `image` value in `src/data/slides.ts`:
 
 ```ts
-image: '/images/about-portrait.jpg',
+image: '/images/home/slide-one.jpg',
 ```
 
 Keep filenames lowercase and use hyphens instead of spaces. Commit the image

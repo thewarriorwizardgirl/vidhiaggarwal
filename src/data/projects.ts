@@ -12,10 +12,7 @@ export type ProjectGroup = {
   projects: Project[]
 }
 
-const asset = (filename: string) =>
-  `https://thewarriorwizardgirl.com/assets/${filename}`
-
-const comingSoonImage = asset('coming_soon_card_1792323606281-kwIgaPDb.jpg')
+const comingSoonImage = '/images/projects/coming-soon.png'
 
 export const projectGroups: ProjectGroup[] = [
   {
@@ -25,7 +22,7 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: 'My Kitchen Garden',
         description: 'E-commerce & Homegrown Produce',
-        image: asset('kitchen_garden_showcase_1792323606708-D2sdA-sQ.jpg'),
+        image: '/images/projects/kitchen-garden.png',
         status: 'Live',
         href: 'https://my-kitchen-garden.netlify.app',
       },

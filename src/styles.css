@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import './theme.css';
+
+:root {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus,
+.carousel-arrow:active {
+  color: #fff;
+  background-color: var(--color-ink);
+}
+
+.carousel-arrow:hover svg,
+.carousel-arrow:focus svg,
+.carousel-arrow:active svg {
+  stroke: #fff;
+}
+
+.slide-copy {
+  font-family: var(--font-slide);
+}
+
+.carousel-cta {
+  color: #fff;
+}
+
+.journal-cta {
+  color: #fff;
+}
+
+.journey-filter[aria-pressed='true'] {
+  color: #fff;
+}
+
+.whatsapp-icon {
+  color: #25d366;
+}
+
+.whatsapp-cta {
+  background-color: #25d366;
+  color: #fff;
+}
+
+.whatsapp-cta:hover {
+  background-color: #1da851;
+}
+
+.contact-email-cta {
+  background-color: #fff;
+  color: var(--color-ink);
+}
+
+.contact-email-cta:hover {
+  background-color: var(--color-mist);
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  color: var(--color-paper);
+  background: var(--color-ink);
+}
+
+@keyframes journey-walk {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  35% {
+    transform: translateY(-2px) rotate(-8deg);
+  }
+
+  70% {
+    transform: translateY(1px) rotate(8deg);
+  }
+}

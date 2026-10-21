@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef, useState } from 'react'
-import { ChevronDown, MapPin, PersonStanding } from 'lucide-react'
+import { useState } from 'react'
+import { MapPin } from 'lucide-react'
 import { milestones, type JourneyCategory } from '../data/journey'
 
 const categories: Array<'All Milestones' | JourneyCategory> = [
@@ -12,215 +12,158 @@ const categories: Array<'All Milestones' | JourneyCategory> = [
 export default function ProfessionalJourneyPage() {
   const [activeCategory, setActiveCategory] =
     useState<(typeof categories)[number]>('All Milestones')
-  const [expandedMilestone, setExpandedMilestone] = useState<string | null>(null)
-  const [hoveredMilestone, setHoveredMilestone] = useState<string | null>(null)
-  const [markerY, setMarkerY] = useState(0)
-  const timelineRef = useRef<HTMLDivElement>(null)
-  const milestoneRefs = useRef(new Map<string, HTMLElement>())
+  const [selectedMilestoneId, setSelectedMilestoneId] = useState(milestones[0].id)
   const visibleMilestones =
     activeCategory === 'All Milestones'
       ? milestones
       : milestones.filter((milestone) => milestone.category === activeCategory)
-  const activeMilestone = hoveredMilestone ?? expandedMilestone
-
-  useLayoutEffect(() => {
-    const timeline = timelineRef.current
-    if (!timeline) return
-
-    const updateMarkerPosition = () => {
-      const target = activeMilestone
-        ? milestoneRefs.current.get(activeMilestone)
-        : null
-      if (!target) return
-
-      const timelineBounds = timeline.getBoundingClientRect()
-      const targetBounds = target.getBoundingClientRect()
-      setMarkerY(targetBounds.top - timelineBounds.top + 24)
-    }
-
-    updateMarkerPosition()
-    const observer = new ResizeObserver(updateMarkerPosition)
-    observer.observe(timeline)
-    milestoneRefs.current.forEach((element) => observer.observe(element))
-    window.addEventListener('resize', updateMarkerPosition)
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('resize', updateMarkerPosition)
-    }
-  }, [activeMilestone, visibleMilestones, expandedMilestone])
+  const selectedMilestone =
+    visibleMilestones.find((milestone) => milestone.id === selectedMilestoneId) ??
+    visibleMilestones[0]
 
   return (
     <section
-      aria-labelledby="journey-title"
+      aria-label="Professional experience and education"
       className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:px-10 sm:py-14 lg:px-16"
     >
-      <header className="mb-8 sm:mb-12">
-        <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-          Experience & education
-        </p>
-        <h1
-          className="text-3xl font-semibold tracking-[-0.045em] sm:text-4xl md:text-5xl"
-          id="journey-title"
-        >
-          Professional Journey
-        </h1>
-        <p className="mt-3 text-sm leading-relaxed text-ink/65 sm:text-base">
-          Software Engineer with 8+ years of experience crafting large-scale, resilient digital platforms. 
-          Click any milestone to explore technical
-achievements, architectures, and stories.
-        </p>
-      </header>
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,4fr)] lg:gap-12">
+        <aside className="lg:pt-1">
+          <p className="mb-6 text-[2.5rem] font-bold leading-tight tracking-tight">
+            Vidhi
+            <br />
+            <span className="text-[0.75em] uppercase">Aggarwal</span>
+          </p>
+          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-ink/65">
+            Creative Technologist
+          </p>
+        </aside>
 
-      <div
-        aria-label="Filter milestones by category"
-        className="mb-7 flex flex-wrap gap-1.5 border-b border-line pb-5"
-        role="group"
-      >
-        {categories.map((category) => {
-          const count =
-            category === 'All Milestones'
-              ? milestones.length
-              : milestones.filter((milestone) => milestone.category === category)
-                  .length
-          const isActive = activeCategory === category
+        <div className="min-w-0">
+          <header className="mb-8 sm:mb-12">
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+              Experience & education
+            </p>
+            <p className="text-sm leading-relaxed text-ink/65 sm:text-base">
+              Software Engineer with 8+ years of experience crafting large-scale,
+              resilient digital platforms. Select an experience to explore technical
+              achievements, architectures, and stories.
+            </p>
+          </header>
 
-          return (
-            <button
-              aria-pressed={isActive}
-              className={`journey-filter rounded-none border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
-                isActive
-                ? 'border-ink bg-ink text-white'
-                  : 'border-line bg-paper text-ink/65 hover:bg-mist hover:text-ink'
-              }`}
-              key={category}
-              onClick={() => {
-                setActiveCategory(category)
-                setExpandedMilestone(null)
-              }}
-              type="button"
-            >
-              {category} ({count})
-            </button>
-          )
-        })}
-      </div>
+          <div
+            aria-label="Filter milestones by category"
+            className="mb-7 flex flex-wrap gap-1.5 border-b border-line pb-5"
+            role="group"
+          >
+            {categories.map((category) => {
+              const count =
+                category === 'All Milestones'
+                  ? milestones.length
+                  : milestones.filter((milestone) => milestone.category === category)
+                      .length
+              const isActive = activeCategory === category
 
-      <div className="relative space-y-7 sm:space-y-9" ref={timelineRef}>
-        <div
-          aria-hidden="true"
-          className="absolute bottom-4 left-[105px] top-4 w-px bg-line sm:left-[145px]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[92px] z-20 flex size-7 items-center justify-center rounded-full border border-line bg-paper text-ink shadow-sm transition-transform duration-500 ease-out sm:left-[132px]"
-          style={{ transform: `translateY(${markerY}px)` }}
-        >
-          <PersonStanding
-            aria-hidden="true"
-            className={activeMilestone ? 'animate-[journey-walk_450ms_ease-in-out]' : ''}
-            key={activeMilestone ?? 'idle'}
-            size={19}
-            strokeWidth={1.8}
-          />
-        </div>
-        {visibleMilestones.map((milestone) => {
-          const isExpanded = expandedMilestone === milestone.id
-
-          return (
-            <article
-              className="relative grid grid-cols-[88px_minmax(0,1fr)] gap-4 sm:grid-cols-[128px_minmax(0,1fr)] sm:gap-5"
-              key={milestone.id}
-              onMouseEnter={() => setHoveredMilestone(milestone.id)}
-              onMouseLeave={() => setHoveredMilestone(null)}
-              ref={(element) => {
-                if (element) milestoneRefs.current.set(milestone.id, element)
-                else milestoneRefs.current.delete(milestone.id)
-              }}
-            >
-              <p className="pt-5 text-right text-[9px] font-semibold uppercase leading-relaxed tracking-[0.08em] text-ink/55 sm:text-[10px]">
-                {milestone.date}
-              </p>
-              <span
-                aria-hidden="true"
-                className="absolute left-[99px] top-6 z-10 size-3 rounded-full border-2 border-paper bg-ink ring-1 ring-line sm:left-[139px]"
-              />
-              <div className="col-start-2 overflow-hidden rounded-lg bg-paper transition-shadow hover:shadow-sm">
+              return (
                 <button
-                  aria-controls={`details-${milestone.id}`}
-                  aria-expanded={isExpanded}
-                  className="group flex w-full items-start justify-between gap-3 p-4 text-left sm:p-5 lg:p-4"
-                  onClick={() =>
-                    setExpandedMilestone(isExpanded ? null : milestone.id)
-                  }
+                  aria-pressed={isActive}
+                  className={`journey-filter rounded-none border px-2.5 py-1.5 text-xs font-semibold transition-colors ${
+                    isActive
+                      ? 'border-ink bg-ink text-white'
+                      : 'border-line bg-paper text-ink/65 hover:bg-mist hover:text-ink'
+                  }`}
+                  key={category}
+                  onClick={() => {
+                    setActiveCategory(category)
+                    setSelectedMilestoneId(
+                      category === 'All Milestones'
+                        ? milestones[0].id
+                        : milestones.find((milestone) => milestone.category === category)!
+                            .id,
+                    )
+                  }}
                   type="button"
                 >
-                  <span className="min-w-0 flex-1">
-                    <span className="flex flex-col gap-1 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
-                      <span
-                        className={`relative inline-block text-sm font-semibold leading-snug tracking-tight after:absolute after:-bottom-1 after:left-0 after:h-1 after:w-full after:origin-left after:bg-ink after:transition-transform after:duration-300 sm:text-base ${
-                          isExpanded
-                            ? 'after:scale-x-100'
-                            : 'after:scale-x-0 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100'
-                        }`}
-                      >
-                        {milestone.role}
-                      </span>
-                      <span className="lg:shrink-0 lg:text-right">
-                        <span className="block text-xs font-medium text-ink/75 sm:text-sm">
-                          {milestone.organization}
-                        </span>
-                        <span className="mt-1.5 flex items-center gap-1 text-[10px] text-ink/50 sm:text-xs lg:justify-end">
-                          <MapPin aria-hidden="true" size={12} />
-                          {milestone.location}
-                        </span>
-                      </span>
-                    </span>
-                    <span className="mt-3 block text-xs leading-relaxed text-ink/65 sm:text-sm">
-                      {milestone.summary}
-                    </span>
-                  </span>
-                  <ChevronDown
-                    aria-hidden="true"
-                    className={`mt-1 shrink-0 transition-transform ${
-                      isExpanded ? 'rotate-180' : ''
-                    }`}
-                    size={17}
-                    strokeWidth={1.6}
-                  />
+                  {category} ({count})
                 </button>
-                {isExpanded && (
-                  <div
-                    className="border-t border-line px-4 pb-5 pt-4 sm:px-5"
-                    id={`details-${milestone.id}`}
+              )
+            })}
+          </div>
+
+          <div className="grid gap-7 md:grid-cols-[minmax(190px,0.8fr)_minmax(0,2fr)] md:gap-10 lg:gap-16">
+            <nav aria-label="Professional experience" className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 md:grid-cols-1 md:content-start">
+              {visibleMilestones.map((milestone) => {
+                const isSelected = selectedMilestone.id === milestone.id
+
+                return (
+                  <button
+                    aria-pressed={isSelected}
+                    className={`border-l-2 px-3 py-3 text-left transition-colors md:px-4 ${
+                      isSelected
+                        ? 'border-ink bg-mist text-ink'
+                        : 'border-transparent text-ink/60 hover:border-line hover:bg-mist/60 hover:text-ink'
+                    }`}
+                    key={milestone.id}
+                    onClick={() => setSelectedMilestoneId(milestone.id)}
+                    type="button"
                   >
-                    <ul className="space-y-2.5 text-xs leading-relaxed text-ink/70 sm:text-sm">
-                      {milestone.details.map((detail) => (
-                        <li className="flex gap-2.5" key={detail}>
-                          <span aria-hidden="true" className="mt-2 size-1 shrink-0 rounded-full bg-ink/50" />
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <h2 className="mb-2 mt-5 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/50">
-                      Core technologies & domains
-                    </h2>
-                    <ul className="flex flex-wrap gap-1.5">
-                      {milestone.technologies.map((technology) => (
-                        <li
-                          className="rounded-full border border-line px-2.5 py-1 text-[10px] text-ink/70"
-                          key={technology}
-                        >
-                          {technology}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                    <span className="block text-xs font-semibold leading-snug">
+                      {milestone.organization}
+                    </span>
+                    <span className="mt-1 block text-[10px] leading-relaxed text-ink/55">
+                      {milestone.date}
+                    </span>
+                  </button>
+                )
+              })}
+            </nav>
+
+            <article aria-live="polite" className="min-w-0">
+              <header className="border-b border-line pb-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink/55">
+                  {selectedMilestone.date}
+                </p>
+                <h2 className="mt-2 text-lg font-semibold tracking-tight sm:text-xl">
+                  {selectedMilestone.role}
+                </h2>
+                <p className="mt-1 text-sm font-medium text-ink/75">
+                  {selectedMilestone.organization}
+                </p>
+                <p className="mt-2 flex items-center gap-1.5 text-xs text-ink/55">
+                  <MapPin aria-hidden="true" size={13} />
+                  {selectedMilestone.location}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-ink/70">
+                  {selectedMilestone.summary}
+                </p>
+              </header>
+
+              <ul className="mt-5 space-y-3 text-xs leading-relaxed text-ink/70 sm:text-sm">
+                {selectedMilestone.details.map((detail) => (
+                  <li className="flex gap-3" key={detail}>
+                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-ink/50" />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6">
+                <h3 className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/55">
+                  Core technologies & domains
+                </h3>
+                <ul className="flex flex-wrap gap-2">
+                  {selectedMilestone.technologies.map((technology) => (
+                    <li
+                      className="border border-line px-2.5 py-1 text-[10px] text-ink/70"
+                      key={technology}
+                    >
+                      {technology}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
-          )
-        })}
+          </div>
+        </div>
       </div>
     </section>
   )

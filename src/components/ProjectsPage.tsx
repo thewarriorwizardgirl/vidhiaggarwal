@@ -7,19 +7,13 @@ export default function ProjectsPage() {
 
   return (
     <section
-      aria-labelledby="projects-title"
+      aria-label="Selected projects"
       className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:px-10 sm:py-14 lg:px-16"
     >
       <header className="mb-9 sm:mb-12">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
           Selected work
         </p>
-        <h1
-          className="text-3xl font-semibold tracking-[-0.045em] sm:text-4xl md:text-5xl"
-          id="projects-title"
-        >
-          Projects
-        </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/65 sm:text-base">
           A curated photogallery of business websites and personal portfolio
           applications.

@@ -19,20 +19,14 @@ export default function ContactPage() {
 
   return (
     <section
-      aria-labelledby="contact-title"
+      aria-label="Contact options"
       className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-10 sm:px-10 sm:py-14 lg:px-16"
     >
       <header className="mb-9 sm:mb-12">
         <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
           Get in touch
         </p>
-        <h1
-          className="text-3xl font-semibold tracking-[-0.045em] sm:text-4xl md:text-5xl"
-          id="contact-title"
-        >
-          Contact Me
-        </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/65 sm:text-base">
+        <p className="max-w-2xl text-sm leading-relaxed text-ink/65 sm:text-base">
           Whether you want to launch or upgrade a website or just want to
           correspond, here is how you can reach me directly.
         </p>

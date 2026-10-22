@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 
-const journalUrl = 'https://journal-aggarwalvidhi.netlify.app/'
+const journalUrl = 'https://journal.thewarriorwizardgirl.com/'
+const journalFallbackUrl = 'https://journal-thewarriorwizardgirl.netlify.app/'
 const journalImage = '/images/journal/journal-image.png'
 
 export default function JournalPage() {
@@ -25,6 +26,18 @@ export default function JournalPage() {
           Read Journal
           <ArrowUpRight aria-hidden="true" size={15} />
         </a>
+        <p className="mt-3 text-center text-xs text-ink/60">
+          If the journal doesn’t open,{' '}
+          <a
+            className="underline underline-offset-2 hover:text-ink"
+            href={journalFallbackUrl}
+            rel="noreferrer"
+            target="_blank"
+          >
+            try the Netlify link
+          </a>
+          .
+        </p>
       </div>
     </section>
   )

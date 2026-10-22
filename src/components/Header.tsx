@@ -15,7 +15,7 @@ const navigation = [
     href: '#professional-journey',
     Icon: Waypoints,
   },
-  { label: 'Contact Me', href: '#contact', Icon: Mail },
+  { label: 'Say Hello', href: '#contact', Icon: Mail },
 ]
 
 type HeaderProps = {

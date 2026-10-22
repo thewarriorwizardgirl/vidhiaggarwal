@@ -99,8 +99,8 @@ properties consistent with the corresponding TypeScript type in that file.
 ### Update the journal app URL
 
 Edit `journalUrl` in `src/components/JournalPage.tsx`. The link is configured
-to open in a new browser tab. Netlify custom-domain setup is documented in
-[README.md](./README.md#add-a-separate-journal-app-later).
+to open in a new browser tab. The current destination is documented in
+[README.md](./README.md#journal-site).
 
 ### Run the site
 

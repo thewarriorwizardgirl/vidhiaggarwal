@@ -60,13 +60,9 @@ The Journal page intentionally contains only an image and a **Read Journal**
 link; no journal posts are included in this portfolio page.
 
 - Image and destination URL: [`src/components/JournalPage.tsx`](./src/components/JournalPage.tsx)
-- Current destination: `https://journal-aggarwalvidhi.netlify.app/`
-- Planned destination after the separate journal app is deployed:
-  `https://journal.thewarriorwizardgirl.com`
-
-When that subdomain is ready, update the `journalUrl` constant in
-`src/components/JournalPage.tsx`. Deployment and DNS steps are in
-[`README.md`](./README.md#add-a-separate-journal-app-later).
+- Primary destination: `https://journal.thewarriorwizardgirl.com/`
+- Fallback destination: `https://journal-thewarriorwizardgirl.netlify.app/`
+- If the primary URL does not open, the page links to the fallback Netlify URL.
 
 ## Contact
 

@@ -48,25 +48,18 @@ For details on adding image assets, see [public/images/README.md](./public/image
 3. Netlify reads [netlify.toml](./netlify.toml). The build command is `npm run build`, and the publish directory is `dist`.
 4. Deploy. Add the primary portfolio domain in the Netlify site's **Domain management** settings and configure the DNS records Netlify provides.
 
-## Add a separate journal app later
+The DNS provider for `thewarriorwizardgirl.com` (including `www.thewarriorwizardgirl.com`) is Wix.
 
-The journal is intended to be its own app and its own Netlify site, available at:
+## Journal site
 
 ```text
-https://journal.thewarriorwizardgirl.com
+Primary:  https://journal.thewarriorwizardgirl.com/
+Fallback: https://journal-thewarriorwizardgirl.netlify.app/
 ```
 
-When the journal app is ready:
-
-1. Create it in a separate repository, or keep it in a separate folder in this repository. It must have its own build command and output directory.
-2. Deploy it to Netlify as a **second site**. For a separate repository, connect that repository directly. For a monorepo, configure the second Netlify site with the journal folder as its **Base directory**; set its build command and publish directory to values appropriate for that app.
-3. Confirm the journal site works at its Netlify-provided address, such as `your-journal-site.netlify.app`.
-4. In that journal site's Netlify **Domain management**, add `journal.thewarriorwizardgirl.com` as a custom domain.
-5. At the DNS provider for `thewarriorwizardgirl.com`, add the record Netlify requests for the `journal` subdomain. It is commonly a CNAME from `journal` to the journal site's Netlify hostname. Follow the exact DNS values Netlify displays and allow time for DNS/HTTPS provisioning.
-6. In [src/components/JournalPage.tsx](./src/components/JournalPage.tsx), change the `journalUrl` constant from the current journal address to `https://journal.thewarriorwizardgirl.com`.
-7. Run `npm run build`, deploy the portfolio site again, and test **Read Journal**. The link is already configured to open in a new tab.
-
-The portfolio's Netlify site and the journal's Netlify site have separate build settings and deployments. Do not point the portfolio site's publish directory at the journal app's build output.
+The portfolio's **Read Journal** button opens the primary URL. If it does not
+open, use the fallback Netlify URL linked beneath the button. Both URLs are
+configured in [`src/components/JournalPage.tsx`](./src/components/JournalPage.tsx).
 
 ## Adding images
 

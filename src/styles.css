@@ -57,26 +57,9 @@ a {
   color: #fff;
 }
 
-.whatsapp-icon {
-  color: #25d366;
-}
-
 .whatsapp-cta {
   background-color: #25d366;
   color: #fff;
-}
-
-.whatsapp-cta:hover {
-  background-color: #1da851;
-}
-
-.contact-email-cta {
-  background-color: #fff;
-  color: var(--color-ink);
-}
-
-.contact-email-cta:hover {
-  background-color: var(--color-mist);
 }
 
 button {

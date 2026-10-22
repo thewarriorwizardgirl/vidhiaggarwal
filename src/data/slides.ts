@@ -20,7 +20,7 @@ export const slides: Slide[] = [
       
     buttonLabel: 'My Work',
     buttonPage: 'projects',
-    image: '/images/home/slide1-workstation.jpeg',
+    image: '/images/home/image1-portfolio.jpg',
     imageAlt: 'Developer at their workstation',
     imageTone: 'color',
   },
@@ -33,21 +33,8 @@ export const slides: Slide[] = [
     buttonLabel: 'My Adventures',
     buttonPage: 'journal',
     image:
-      '/images/home/slide2-trek.jpg',
+      '/images/home/image2-portfolio.JPG',
     imageAlt: 'Adventurer',
-    imageTone: 'color',
-  },
-  {
-    number: '03',
-    eyebrow: 'What comes next',
-    title: 'Make room for\nwonder.',
-    description:
-      'The best ideas start with a question. I like following the unexpected ones, gathering inspiration along the way, and seeing what takes shape.',
-    buttonLabel: 'My Journal',
-    buttonPage: 'journal',
-    image:
-      '/images/home/slide3-journal.jpg',
-    imageAlt: 'Journaling',
     imageTone: 'color',
   },
 ]

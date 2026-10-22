@@ -27,12 +27,6 @@ export const projectGroups: ProjectGroup[] = [
         href: 'https://my-kitchen-garden.netlify.app',
       },
       {
-        name: 'New India Logistics (Import Export Business)',
-        description: 'Global Freight & Supply Chain',
-        image: comingSoonImage,
-        status: 'Soon',
-      },
-      {
         name: 'South Indian Tea',
         description: 'Single-Estate Direct Storefront',
         image: comingSoonImage,
@@ -51,19 +45,14 @@ export const projectGroups: ProjectGroup[] = [
     subtitle: 'Profiles & Case Studies',
     projects: [
       {
-        name: 'CA Bhawna',
-        description: 'Chartered Accountancy Practice',
-        image: comingSoonImage,
-        status: 'Soon',
+        name: "Shruti's Studio",
+        description: 'Artist & Designer Portfolio',
+        image: '/images/projects/shruti.png',
+        href: 'https://shruti-bansal.netlify.app/',
+        status: 'Live',
       },
       {
-        name: 'Versatile Shruti',
-        description: 'Creative Portfolio & Design',
-        image: comingSoonImage,
-        status: 'Soon',
-      },
-      {
-        name: 'Product Manager Ishika',
+        name: 'Space Ishika',
         description: 'Product Leadership & Systems',
         image: comingSoonImage,
         status: 'Soon',

@@ -1,8 +1,8 @@
 import { ArrowUpRight, Mail, MessageCircle } from 'lucide-react'
+import { contactEmail } from '../data/contact'
 
-const email = 'thewarriorwizardgirl@gmail.com'
 const whatsappUrl =
-  'https://wa.me/?text=Hi%20Vidhi!%20I%20would%20like%20to%20discuss%20launching%20or%20upgrading%20a%20website%20or%20blog.'
+  'https://wa.me/919873816925?text=Hi%20Vidhi!%20I%20would%20like%20to%20discuss%20launching%20or%20upgrading%20a%20website%20or%20blog.'
 
 export default function ContactPage() {
   return (
@@ -21,7 +21,7 @@ export default function ContactPage() {
         <div className="grid max-w-[610px] gap-3">
           <a
             className="group flex min-h-[92px] items-center gap-4 border border-line p-4 transition-colors hover:bg-mist sm:gap-5 sm:p-5"
-            href={`mailto:${email}`}
+            href={`mailto:${contactEmail}`}
           >
             <span className="flex size-[50px] shrink-0 items-center justify-center bg-ink text-white">
               <Mail aria-hidden="true" size={22} strokeWidth={1.7} />
@@ -29,7 +29,7 @@ export default function ContactPage() {
             <span className="min-w-0 flex-1">
               <span className="block text-xs text-ink/60">Email me</span>
               <span className="mt-1 block break-all text-sm font-semibold sm:text-base">
-                {email}
+                {contactEmail}
               </span>
             </span>
             <ArrowUpRight

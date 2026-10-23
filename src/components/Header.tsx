@@ -55,7 +55,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
               <a
                 aria-label={item.label}
                 aria-current={isActive ? 'page' : undefined}
-                className={`group relative flex min-h-11 items-center justify-center px-1 text-center text-xs font-bold uppercase tracking-[0.09em] transition-colors after:absolute after:inset-x-1 after:bottom-0 after:h-1 after:origin-left after:bg-ink after:transition-transform after:duration-300 sm:min-h-12 sm:text-sm ${
+                className={`group relative flex min-h-11 flex-col items-center justify-center gap-0.5 px-1 text-center text-xs font-bold uppercase tracking-[0.09em] transition-colors after:absolute after:inset-x-1 after:bottom-0 after:h-1 after:origin-left after:bg-ink after:transition-transform after:duration-300 sm:min-h-12 sm:flex-row sm:gap-4 sm:text-sm ${
                   isActive
                     ? 'text-ink after:scale-x-100'
                     : 'text-ink/60 after:scale-x-0 hover:text-ink hover:after:scale-x-100 focus-visible:text-ink focus-visible:after:scale-x-100'
@@ -67,9 +67,20 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
               >
                 <item.Icon
                   aria-hidden="true"
-                  className="size-5 sm:hidden"
+                  className="size-5"
                   strokeWidth={1.8}
                 />
+                <span className="text-[8px] leading-tight tracking-normal sm:hidden">
+                  {item.label === 'Professional Journey' ? (
+                    <>
+                      Professional
+                      <br />
+                      Journey
+                    </>
+                  ) : (
+                    item.label
+                  )}
+                </span>
                 <span className="hidden sm:inline">{item.label}</span>
               </a>
             )

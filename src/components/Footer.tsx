@@ -1,3 +1,5 @@
+import { contactEmail } from '../data/contact'
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/20 bg-ink text-white">
@@ -5,9 +7,9 @@ export default function Footer() {
         <span>vidhiaggarwal</span>
         <a
           className="transition-colors hover:text-white"
-          href="mailto:thewarriorwizardgirl@gmail.com"
+          href={`mailto:${contactEmail}`}
         >
-          thewarriorwizardgirl@gmail.com
+          {contactEmail}
         </a>
       </div>
     </footer>

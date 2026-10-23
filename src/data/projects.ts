@@ -16,7 +16,26 @@ const comingSoonImage = '/images/projects/coming-soon.png'
 
 export const projectGroups: ProjectGroup[] = [
   {
-    title: 'Business Websites',
+    title: 'Portfolios',
+    subtitle: 'Personal & Professional Showcases',
+    projects: [
+      {
+        name: "Shruti's Studio",
+        description: 'Artist & Designer Portfolio',
+        image: '/images/projects/shruti.png',
+        href: 'https://shruti-bansal.netlify.app/',
+        status: 'Live',
+      },
+      {
+        name: 'Space Ishika',
+        description: 'Product Leadership & Systems',
+        image: comingSoonImage,
+        status: 'Soon',
+      },     
+    ],
+  },
+  {
+    title: 'Business',
     subtitle: 'Commercial & Storefronts',
     projects: [
       {
@@ -35,25 +54,6 @@ export const projectGroups: ProjectGroup[] = [
       {
         name: 'Custom Gifting',
         description: 'Bespoke Packaging & Hampers',
-        image: comingSoonImage,
-        status: 'Soon',
-      },
-    ],
-  },
-  {
-    title: 'Personal Portfolios',
-    subtitle: 'Profiles & Case Studies',
-    projects: [
-      {
-        name: "Shruti's Studio",
-        description: 'Artist & Designer Portfolio',
-        image: '/images/projects/shruti.png',
-        href: 'https://shruti-bansal.netlify.app/',
-        status: 'Live',
-      },
-      {
-        name: 'Space Ishika',
-        description: 'Product Leadership & Systems',
         image: comingSoonImage,
         status: 'Soon',
       },
